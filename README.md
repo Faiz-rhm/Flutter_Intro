@@ -16,7 +16,8 @@ flutter run
 
 Screenshots
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/14290499/199661342-8fe3f1f9-6ad2-4bb4-8eaf-4e0945304ba8.gif)
+<img width="1810" alt="Screen Shot 2022-12-14 at 3 02 40 PM" src="https://user-images.githubusercontent.com/14290499/207572168-80a33433-7f93-4208-b552-96b153778fb8.png">
+
 
 
 ## Pull Requests
