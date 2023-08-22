@@ -1,5 +1,14 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intro/intro_widget.dart';
+
+class AppScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+  };
+}
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -17,7 +26,9 @@ class _IntroScreenState extends State<IntroScreen> {
 
   void onNextPage(){
     if(_activePage  < _pages.length - 1) {
-      _pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.linear,);
+      _pageController.nextPage(
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.fastEaseInToSlowEaseOut,);
     }
   }
 
@@ -53,6 +64,7 @@ class _IntroScreenState extends State<IntroScreen> {
           PageView.builder(
             controller: _pageController,
             itemCount: _pages.length,
+            scrollBehavior: AppScrollBehavior(),
             onPageChanged: (int page) {
               setState(() {
                 _activePage = page;
@@ -60,6 +72,7 @@ class _IntroScreenState extends State<IntroScreen> {
             },
             itemBuilder: (BuildContext context, int index){
               return IntroWidget(
+                index: index,
                 color: _pages[index]['color'],
                 title: _pages[index]['title'],
                 description: _pages[index]['description'],

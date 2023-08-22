@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class IntroWidget extends StatelessWidget {
-  const IntroWidget({super.key, required this.color, required this.title, required this.description, required this.skip, required this.image, required this.onTab,});
+  const IntroWidget({
+    super.key,
+    required this.color,
+    required this.title,
+    required this.description,
+    required this.skip,
+    required this.image,
+    required this.onTab,
+    required this.index,});
 
   final String color;
   final String title;
@@ -9,6 +17,7 @@ class IntroWidget extends StatelessWidget {
   final bool skip;
   final String image;
   final VoidCallback onTab;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +40,11 @@ class IntroWidget extends StatelessWidget {
             left: 0,
             child: Container(
               height: MediaQuery.of(context).size.height / 2.16,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(100)
+                  topLeft: index == 0 ? const Radius.circular(100) : const Radius.circular(0),
+                  topRight: index == 2 ? const Radius.circular(100) : const Radius.circular(0),
                 )
               ),
               child: Padding(
@@ -61,7 +71,7 @@ class IntroWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    onPressed: (){},
+                    onPressed: () {},
                     child: const Text('Skip Now', style: TextStyle(color: Colors.black),),
                   ),
                   GestureDetector(
